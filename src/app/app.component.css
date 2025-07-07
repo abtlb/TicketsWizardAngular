@@ -1,0 +1,32 @@
+.parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: [line1] 10vh [line2] 1fr [line3] auto [line4];
+    height: 100vh;
+}
+
+.router-outlet {
+    grid-row: line1 / line3;
+
+}
+
+.navbar {
+    padding: 0;
+}
+
+.footer {
+    grid-row: line3 / line4;
+    text-align: center;
+    padding: 2em;
+    background-color: #333;
+    color: white;
+    font-size: 0.9em;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        height: 10vh;
+        padding: 0;
+    }
+}

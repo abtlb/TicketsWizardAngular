@@ -1,0 +1,198 @@
+* {
+  height: 100%;
+}
+
+/* Base styles (your existing rules) */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://tazkarti.com/home-bg.70bc157e537190448e7c.jpg')
+      no-repeat center center/cover;
+    color: white;
+    padding: 3em 2em;
+    text-align: center;
+    height: 70vh;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2em;
+    border-radius: 10px;
+  }
+  
+  .hero h1 {
+    /* fluid typography with clamp(): min 1.5rem, preferred 8vw, max 3em */
+    font-size: clamp(1.5rem, 8vw, 3em);
+    margin-bottom: 0.5em;
+  }
+  
+  .hero p {
+    font-size: clamp(1rem, 3vw, 1.2em);
+    margin-bottom: 1.8em;
+  }
+  
+  .carousel {
+    width: 80%;
+  }
+
+  .features {
+    background-color: rgb(165, 143, 112);
+    height: 20vh;
+    padding: 2em;
+  }
+
+  .cta-button {
+    padding: 0.7em 2em;
+    background-color: rgb(54, 114, 255);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    height: 100px;
+}
+
+.cta-button:hover {
+    background-color: #218838;
+}
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+   }
+   
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+  .slide-text h2 {
+    font-size: 3em;
+  }
+
+  .slide-text p {
+    font-size: 1.4em;
+    width: 70%;
+    text-align: center;
+  }
+
+/* core fade setup (Bootstrap already provides this if you include V5 CSS) */
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .carousel-fade .carousel-item.active {
+    opacity: 1;
+  }
+  
+  /* now target just the text wrapper */
+  .carousel-item .slide-text {
+    transition: opacity .5s ease;
+  }
+  .carousel-item:not(.active) .slide-text {
+    opacity: 0;
+  }
+  
+  
+  /* Tablets and below */
+  @media (max-width: 992px) {
+    .hero {
+      padding: 2.5em 1.5em;
+      height: 70vh;            /* let content dictate height */
+      background-position: top;/* shift bg for better crop */
+    }
+    .hero-content {
+      width: 100%;              /* narrower content box */
+      padding: 1.5em;
+    }
+    .carousel-container {
+      flex-direction: column;
+    }
+
+    .cta-button {
+      padding: 0.6em 1.2em;
+      height: 80px;
+    }
+
+    .slide-text h2 {
+      font-size: 2.2em;
+    }
+
+    .slide-text p {
+      font-size: 1.4em;
+      width: 70%;
+      text-align: center;
+    }
+      .features {
+      padding: 2em 0.5em;
+      min-height: auto;
+      width: 100%;
+    }
+    .carousel {
+      width: 100%; /* full height for mobile */
+    }
+  }
+  
+  /* Mobile (phones) */
+  @media (max-width: 576px) {
+    .hero {
+      height: 70vh;        /* full height for mobile */
+      margin-top: 0; /* default */
+    }
+    .hero-content {
+      width: 100%;
+      height: 70%;
+    }
+    .hero h1 {
+      /* even smaller at very small screens */
+      font-size: clamp(1.25rem, 9vw, 2.5rem);
+    }
+    .hero h5 {
+      font-size: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    .cta-button {
+      font-size: 0.9rem;
+      padding: 0.5em 1em;
+      height: 70px;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+     
+    .slide-text h2 {
+      font-size: 1.8em;
+    }
+
+    .slide-text p {
+      font-size: 1.2em;
+      width: 70%;
+      text-align: center;
+    }
+      .features {
+      padding: 2em 0.5em;
+      min-height: auto;
+      width: 100%;
+    }
+    .carousel {
+      width: 100%; /* full height for mobile */
+      height: 20vh;
+    }
+  }
+
+  @media (max-width: 400px) {
+        .slide-text h2 {
+      font-size: 1.4em;
+    }
+
+    .slide-text p {
+      font-size: 1.0em;
+      width: 70%;
+      text-align: center;
+    }
+  }

@@ -1,0 +1,135 @@
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    /* border-style: double; */
+    width: 100%;
+    height: 80%;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+    font-size: 1.5rem;
+}
+
+.nav .button {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    background-color: #555;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav .button:hover {
+    background-color: #777;
+}
+
+.nav .register {
+    background-color: #007BFF;
+}
+
+.nav .register:hover {
+    background-color: #0056b3;
+}
+
+.navbar-cont {
+    padding: 1em 2em;
+    background-color: transparent; /* Keep transparent background */
+    color: rgb(226, 226, 226);
+    /* New floating styles */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-icon {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.logo-img {
+    height: 100%;
+}
+
+.logo-img:hover {
+    cursor: pointer;
+}
+
+/* -------------------------------------------- */
+/* 2. Tablet (≤768px): just scale things a bit  */
+/* -------------------------------------------- */
+@media (max-width: 768px) {
+    .logo {
+        font-size: clamp(1.25rem, 4vw, 1.5rem);
+    }
+    .nav .button {
+        padding: clamp(0.4em, 1.5vw, 0.6em) clamp(0.8em, 3vw, 1em);
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+    .nav {
+        gap: 0.5em;
+    }
+}
+
+/* -------------------------------------------- */
+/* 3. Mobile (≤576px): collapse into hamburger  */
+/* -------------------------------------------- */
+@media (max-width: 576px) {
+    /* show the hamburger icon */
+    .menu-icon {
+        display: block;
+        color: white;
+    }
+
+    /* hide the full nav by default */
+    .nav {
+        width: 100%;
+        flex-direction: row;
+        margin: 0;               /* override any auto margin */
+        padding: 1em 0;
+        font-size: 1rem;
+    }
+
+    /* when you add `.active` (via JS or Angular binding), show it */
+    .nav.active {
+        display: flex;
+    }
+
+    /* stack links vertically */
+    .nav .button {
+        margin: 0.25em 1em;
+    }
+
+    /* make the logo shrink a bit */
+    .logo {
+        font-size: clamp(1rem, 5vw, 1.25rem);
+    }
+}
+
+/* -------------------------------------------- */
+/* Body/Content adjustment for fixed navbar     */
+/* -------------------------------------------- */
+/* Add this to your global styles or the component that comes after the navbar */
+body {
+    padding-top: 10vh; 
+    /* Adjust based on your navbar height */
+}
+
+/* Or if you prefer to add it to a specific content container */
+.main-content {
+    padding-top: 10vh; 
+    /* Adjust based on your navbar height */
+    margin-top: 0;
+}

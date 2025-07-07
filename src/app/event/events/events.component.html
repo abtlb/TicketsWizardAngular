@@ -1,0 +1,83 @@
+<div class="eventsCont">
+    <div class="eventsParent">
+        <!-- Filter section -->
+        <div class="filter">
+            <mat-accordion class="filter-cont">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-description>
+                            <div class="filter-title">
+                                Filter the events
+                                <span class="filter-icon">▼</span>
+                            </div>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <form [formGroup]="filterGroup" class="filter-form">
+                        <div class="filter-texts">
+                            <div class="form-field">
+                                <input matInput formControlName="name" placeholder=" ">
+                                <label>{{filterOptions.name || 'Event name'}}</label>
+                            </div>
+                            <div class="form-field">
+                                <input matInput formControlName="location" placeholder=" ">
+                                <label>{{filterOptions.location || 'Event location'}}</label>
+                            </div>
+                            <div class="form-field">
+                                <input matInput formControlName="performer" placeholder=" ">
+                                <label>{{filterOptions.performer || 'Event performer'}}</label>
+                            </div>
+                        </div>
+                        <div class="filter-date">
+                            <div class="form-field">
+                                <mat-date-range-input class="date-input" [formGroup]="filterGroup"
+                                    [rangePicker]="picker">
+                                    <input matStartDate formControlName="dateStart" placeholder="Start date">
+                                    <input matEndDate formControlName="dateEnd" placeholder="End date">
+                                </mat-date-range-input>
+                                <mat-hint style="margin: auto;">
+                                    {{filterOptions.dateStart
+                                    ? (filterOptions.dateStart | date:'dd/MM/yyyy')
+                                    : 'MM/DD/YYYY'}}
+                                    –
+                                    {{filterOptions.dateEnd
+                                    ? (filterOptions.dateEnd | date:'dd/MM/yyyy')
+                                    : 'MM/DD/YYYY'}}
+                                </mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </div>
+                        </div>
+                        <div class="filter-buttons">
+                            <button mat-button class="btn btn-primary" (click)="applyFilters()">Apply Filters</button>
+                            <button mat-button class="btn btn-secondary" (click)="clearFilters()">Clear All</button>
+                        </div>
+                    </form>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <!-- Events grid -->
+         <div class="events-container">
+             <div *ngFor="let item of filteredEvents" class="item-box">
+                 <img class="event-img" src="/images/imageBrown.png" alt="Event Image" (click)="navigateToDetails(item)">
+                 <p class="event-name">{{ item.name }}</p>
+             </div>
+         </div>
+    </div>
+
+    <script>
+        // Add floating label behavior for form fields
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.form-field input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    if (this.value) {
+                        this.setAttribute('data-filled', 'true');
+                    } else {
+                        this.removeAttribute('data-filled');
+                    }
+                });
+            });
+        });
+    </script>
+</div>

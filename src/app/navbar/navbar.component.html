@@ -1,0 +1,32 @@
+<mat-grid-list cols="40" rowHeight="10vh" class="navbar-cont">
+    <!-- <a class="logo" routerLink="">Tickets Wizard</a> -->
+     <mat-grid-tile [colspan]="3"></mat-grid-tile>
+    <mat-grid-tile [colspan]="12">
+      <a class="logo">
+        <img src="/images/logo.png" routerLink="" alt="Company Logo" class="logo-img">
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="23">
+      <nav class="nav">
+          <a *ngIf="!isAuthinticated" routerLink="login" class="button">Login</a>
+          <a *ngIf="!isAuthinticated" routerLink="register" class="button register">Register</a>
+          <div *ngIf="isAuthinticated">Welcome, {{currentUser?.firstName}}</div>
+          <div *ngIf="isAuthinticated">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon class="menu-icon">more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <a mat-menu-item routerLink="mytickets">
+                    <mat-icon>view_list</mat-icon>
+                    <span>My Tickets</span>
+                  </a>
+                  <button (click)="onLogout()" mat-menu-item>
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                  </button>
+                </mat-menu>          
+          </div>
+      </nav>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2"></mat-grid-tile>
+</mat-grid-list>

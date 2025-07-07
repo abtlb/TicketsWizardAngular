@@ -1,0 +1,1 @@
+export const DEFAULT_IMG_PATH = "/images/image.png";

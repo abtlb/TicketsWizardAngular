@@ -1,0 +1,42 @@
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+        <h1>Looking for an event to attend?</h1>
+        <h5>This is your #1 choice to get your tickets!</h5>
+        <a *ngIf="isAuthinticated" routerLink="events" class="cta-button">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features d-flex align-items-center justify-content-center">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel"> 
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center align-items-center flex-column slide-text">
+                    <h2>Your favorites, all in one place</h2>
+                    <p>Whether it's a football match, a rock concert, a gathering, Ticket Wizard has it all!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center align-items-center flex-column slide-text">
+                    <h2>Access your tickets</h2>
+                    <p>View your purchased tickets with ease</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center align-items-center flex-column slide-text">
+                    <h2>Choose events that suit you</h2>
+                    <p>Our filtering options allow you to view only the events you're interested in</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+  </section>

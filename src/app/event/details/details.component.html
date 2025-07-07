@@ -1,0 +1,51 @@
+<!-- image
+Title
+Tickets
+Description
+Performers
+Location
+Date/Time -->
+
+
+<div class="event-details-parent">
+    <div class="event-image">
+        <!-- <img src="{{ event?.img_path }}" alt="Event Image"> -->
+        <img src="/images/imageBrown.png" alt="Event Image">
+    </div>
+    <div class="event-details">
+        <div class="event-title">
+            {{event?.name}} at {{event?.location}}
+        </div>
+        <div class="event-datetime">
+            {{event?.event_date}}
+        </div>
+        <div class="event-desc ms-2 fw-bold border-top border-bottom w-100 text-center fs-4 mt-4 py-3">
+            {{event?.description}}
+        </div>
+        <div class="event-performers w-100 mt-4 ms-2">
+            <p class="h2 fw-light">With Performers</p>
+            <ul class="list-group w-100">
+                <li *ngFor="let performer of event?.event_Performers" class="list-group-item w-100 bg-transparent h4"> {{performer.perfomer.performer_name}}</li>
+            </ul>
+        </div>
+        <div class="event-tickets w-100 mt-4 ms-2">
+            <p class="h2 fw-light">
+                Tickets
+            </p>
+            <ul class="list-group w-100">
+                <li *ngFor="let ticket of event?.event_Tickets; let i = index" class="list-group-item w-100 bg-transparent h4 event-ticket"> 
+                    <p>{{ticket.ticket_type}}</p>
+                    <div class="ticket-button">
+                        <div class="usure-fade" 
+                        [@openClose]="isOpen[i] ? 'open' : 'closed'"
+                        >
+                            <div>Are you sure?</div>
+                            <button mat-raised-button class="bg-transparent" (click)="onBuy(ticket.event_id, ticket.ticket_type)">Yes</button>
+                        </div>
+                        <button mat-stroked-button (click)="usureOpen(i)"> Buy </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>  

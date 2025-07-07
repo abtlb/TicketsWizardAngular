@@ -1,0 +1,27 @@
+<div class="loginBigContainer">
+  <div class="loginContainer">
+    <div>
+      <h1 class="aboveForm">
+        Sign in to your account
+      </h1>
+    </div>
+    <div>
+      <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+        <div class="mb-3">
+          <label>Username</label>
+          <input type="text" class="form-control" formcon formControlName="username">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password">
+          <div class="form-text">We'll never share your password with anyone else.</div>
+        </div>
+        <div class="mb-3 admin-check">
+          <input type="checkbox" class="form-check-input" formControlName="isAdmin">
+          <label class="form-check-label mx-2">Are you an admin?</label>
+        </div>
+        <button type="submit" class="btn btn-primary border p-3">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>

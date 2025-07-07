@@ -1,0 +1,66 @@
+<div class="register-background">
+  <div class="register-container">
+    <div>
+      <h1 class="aboveForm">
+          Register to your account
+      </h1>
+    </div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="username">Username</label>
+          <input id="username" formControlName="username" type="text" />
+          <div *ngIf="submitted && f['username'].errors">
+            <small *ngIf="f['username'].errors['required']">Username is required</small>
+          </div>
+        </div>
+  
+        <div>
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" type="password" />
+          <div *ngIf="submitted && f['password'].errors">
+            <small *ngIf="f['password'].errors['required']">Password is required</small>
+            <small *ngIf="f['password'].errors['minLength']">Password must be at least 6 characters</small>
+          </div>
+        </div>
+  
+        <div>
+          <label for="firstName">First Name</label>
+          <input id="firstName" formControlName="firstName" type="text" />
+          <div *ngIf="submitted && f['firstName'].errors">
+            <small *ngIf="f['firstName'].errors['required']">First name is required</small>
+          </div>
+        </div>
+  
+        <div>
+          <label for="lastName">Last Name</label>
+          <input id="lastName" formControlName="lastName" type="text" />
+          <div *ngIf="submitted && f['lastName'].errors">
+            <small *ngIf="f['lastName'].errors['required']">Last name is required</small>
+          </div>
+        </div>
+  
+        <div>
+          <label for="dateOfBirth">Date of Birth</label>
+          <input id="dateOfBirth" formControlName="dateOfBirth" type="date" />
+          <div *ngIf="submitted && f['dateOfBirth'].errors">
+            <small *ngIf="f['dateOfBirth'].errors['required']">Date of Birth is required</small>
+          </div>
+        </div>
+  
+        <div>
+          <label for="phoneNumber">Phone Number</label>
+          <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+          <div *ngIf="submitted && f['phoneNumber'].errors">
+            <small *ngIf="f['phoneNumber'].errors['required']">Phone number is required</small>
+            <small *ngIf="f['phoneNumber'].errors['pattern']">Phone number must be numeric</small>
+          </div>
+        </div>
+  
+        <button type="submit">Register</button>
+  
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+</div>

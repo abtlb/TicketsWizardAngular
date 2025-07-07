@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretty Tickets List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<div class="tickets-bg">
+    <mat-list role="list" class="tickets-list">
+        <mat-accordion class="tickets-cont">
+            <mat-expansion-panel *ngFor="let id of ticketIds" hideToggle class="ticket-accordion">
+                <mat-expansion-panel-header class="expansion-header">
+                    <div class="header-content">
+                        <mat-panel-title class="panel-title">
+                            <div class="ticket-icon">
+                                <span class="material-icons">confirmation_number</span>
+                            </div>
+                            <span>Ticket ID: {{id}}</span>
+                        </mat-panel-title>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                </mat-expansion-panel-header>
+                <div class="ticket-wrapper">
+                    <app-ticket [id]="id" class="ticket-component"></app-ticket>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-list>
+</div>
+</html>
