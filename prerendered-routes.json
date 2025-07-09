@@ -1,9 +1,0 @@
-{
-  "routes": [
-    "/",
-    "/events",
-    "/login",
-    "/mytickets",
-    "/register"
-  ]
-}
