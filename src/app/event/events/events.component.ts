@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { EventViewModel } from '../../models/Event/event-view-model.model';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
@@ -20,7 +20,7 @@ import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component'
   selector: 'app-events',
   standalone: true,
   imports: [
-    CommonModule, LoadingSpinnerComponent, RouterLink, MatIconModule, MatMenuModule, MatButtonModule, MatSelectModule, MatExpansionModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
+    CommonModule, LoadingSpinnerComponent, MatIconModule, MatMenuModule, MatButtonModule, MatSelectModule, MatExpansionModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
