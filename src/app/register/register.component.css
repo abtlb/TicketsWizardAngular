@@ -19,8 +19,9 @@
     flex-direction: column;
     justify-content: start;
     align-items: stretch;
-    max-width: 400px;
-    min-height: 70vh;
+    max-width: 70vw;
+    height: auto;
+    overflow-y: auto;
     margin: 3em auto;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
@@ -173,6 +174,41 @@
     border-radius: 5px;
     border: 1px solid rgba(255, 107, 107, 0.3);
 }
+.date-field {
+    grid-column: 1 / -1;
+    background: transparent;
+    padding: 0;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.date-field .mat-form-field {
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    border-radius: 5px;
+}
+
+.date-field .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #28a745;
+}
+
+.date-field .mat-input-element {
+    padding: 0.8em;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.date-field .mat-form-field-label {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+mat-label {
+    color: #ffffff;
+    font-weight: 500;
+}
+
 
 /* Responsive adjustments matching login form breakpoints */
 @media (max-width: 992px) {

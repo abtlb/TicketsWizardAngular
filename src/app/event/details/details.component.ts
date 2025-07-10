@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { MatButtonModule} from '@angular/material/button'
 import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
 
 @Component({
   selector: 'app-details',
@@ -28,7 +29,7 @@ import { RouterLink, RouterOutlet, Router } from '@angular/router';
     ]),
   ],
   standalone: true,
-  imports: [CommonModule, MatButtonModule],
+  imports: [CommonModule, MatButtonModule, LoadingSpinnerComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -36,21 +37,25 @@ export class DetailsComponent implements OnInit{
   id: string | null= "";
   event: EventViewModel | null = null;
   isOpen: boolean[] = [];
+  isLoading = false;
   
   constructor(private route: ActivatedRoute, private eventService: EventService, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.isLoading = true;
     this.eventService.getEvent((Number)(this.id)).subscribe({
       next: (res: EventViewModel) => {
         this.event = res;
         res.event_Tickets.forEach(ticket => {
           this.isOpen.push(false);
         });
+        this.isLoading = false;
       }, 
       error: err => 
       {
         console.log(`Error getting event with id: ${this.id}, ${err}`);
+        this.isLoading = false;
       }
     })
   }

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
-
+import { LoadingSpinnerComponent } from '../shared/loading-spinner.component';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, LoadingSpinnerComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -17,33 +17,24 @@ export class LoginComponent {
     password: new FormControl(''),
     isAdmin: new FormControl(false)
   })
+    isLoading = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
 handleSubmit() {
+  this.isLoading = true;
   //---handle invalid forms---
   this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!, this.loginForm.value.isAdmin!).subscribe({
     next: (res : any) => {
       this.authService.setToken(res.token);
-
-      // this.authService.getRole().subscribe(
-      //   {
-      //    next: (res: any) => {
-      //      console.log(res.message);
-      //    },
-      //    error: err => {
-      //      console.log(err);
-      //    }
-      //   }
-      //  )
        this.authService.updateAuthintication();
        this.router.navigate(['']);
+      this.isLoading = false;
     },
     error: err => {
       console.log(`Error code: ${err.status}`);
+      this.isLoading = false;
     }
   });
-
-  
   }  
 }

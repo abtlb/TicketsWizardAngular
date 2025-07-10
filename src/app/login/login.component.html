@@ -20,7 +20,10 @@
           <input type="checkbox" class="form-check-input" formControlName="isAdmin">
           <label class="form-check-label mx-2">Are you an admin?</label>
         </div>
-        <button type="submit" class="btn btn-primary border p-3">Sign In</button>
+        <button *ngIf="!isLoading; else elseBlock" type="submit" class="btn btn-primary border p-3">Sign In</button>
+        <ng-template #elseBlock>
+          <app-loading-spinner></app-loading-spinner>
+        </ng-template>
       </form>
     </div>
   </div>

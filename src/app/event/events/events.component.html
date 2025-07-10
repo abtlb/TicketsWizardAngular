@@ -57,12 +57,15 @@
         </div>
 
         <!-- Events grid -->
-         <div class="events-container">
+         <div *ngIf="!isLoading; else elseBlock" type="submit" class="events-container">
              <div *ngFor="let item of filteredEvents" class="item-box">
                  <img class="event-img" src="/images/imageBrown.png" alt="Event Image" (click)="navigateToDetails(item)">
                  <p class="event-name">{{ item.name }}</p>
-             </div>
-         </div>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+              <app-loading-spinner></app-loading-spinner>
+            </ng-template>
     </div>
 
     <script>

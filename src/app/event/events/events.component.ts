@@ -14,19 +14,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
   imports: [
-    CommonModule, RouterLink, MatIconModule, MatMenuModule, MatButtonModule, MatSelectModule, MatExpansionModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
+    CommonModule, LoadingSpinnerComponent, RouterLink, MatIconModule, MatMenuModule, MatButtonModule, MatSelectModule, MatExpansionModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })
 export class EventsComponent implements OnInit{
 
-  // groupedEvents: EventViewModel[][] = [];
+  isLoading = false;
   filteredEvents: EventViewModel[] = [];
   events: EventViewModel[] = [];
   filterOptions:EventFilter = new EventFilter();
@@ -99,16 +100,19 @@ export class EventsComponent implements OnInit{
   }
 
   private loadEvents() {
+    this.isLoading = true;
     this.eventService.getEvents().subscribe(
       {
         next:( res: EventViewModel[]) =>
         {
          this.events = res;
          const filteredEvents = this.filterEvents(res);
+         this.isLoading = false;
         },
         error: err => {
           console.log("Error getting events: ");
           console.log(err);
+          this.isLoading = false;
         }
       }
     )

@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pretty Tickets List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
 <div class="tickets-bg">
-    <mat-list role="list" class="tickets-list">
+    <mat-list role="list" class="tickets-list" *ngIf="!isLoading; else elseBlock">
         <mat-accordion class="tickets-cont">
             <mat-expansion-panel *ngFor="let id of ticketIds" hideToggle class="ticket-accordion">
                 <mat-expansion-panel-header class="expansion-header">
@@ -28,5 +19,7 @@
             </mat-expansion-panel>
         </mat-accordion>
     </mat-list>
+    <ng-template #elseBlock>
+        <app-loading-spinner></app-loading-spinner>
+    </ng-template>
 </div>
-</html>

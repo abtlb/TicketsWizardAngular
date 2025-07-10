@@ -341,9 +341,15 @@
 
 @media (max-width: 576px) {
     .eventsParent {
-        width: 95%;
-        padding: 0.5rem 0;
+        width: 95vw;
+        /* padding: 0.5rem 0; */
         grid-template-columns: 1fr; /* Single column on small mobile */
+    }
+
+    .events-container {
+        grid-template-columns: 1fr;
+        width: 90%;
+        gap: 1.5rem;
     }
 
     .filter-buttons {

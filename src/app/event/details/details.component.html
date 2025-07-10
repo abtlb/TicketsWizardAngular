@@ -12,7 +12,7 @@ Date/Time -->
         <!-- <img src="{{ event?.img_path }}" alt="Event Image"> -->
         <img src="/images/imageBrown.png" alt="Event Image">
     </div>
-    <div class="event-details">
+    <div class="event-details" *ngIf="!isLoading; else elseBlock">
         <div class="event-title">
             {{event?.name}} at {{event?.location}}
         </div>
@@ -36,16 +36,24 @@ Date/Time -->
                 <li *ngFor="let ticket of event?.event_Tickets; let i = index" class="list-group-item w-100 bg-transparent h4 event-ticket"> 
                     <p>{{ticket.ticket_type}}</p>
                     <div class="ticket-button">
-                        <div class="usure-fade" 
-                        [@openClose]="isOpen[i] ? 'open' : 'closed'"
-                        >
-                            <div>Are you sure?</div>
-                            <button mat-raised-button class="bg-transparent" (click)="onBuy(ticket.event_id, ticket.ticket_type)">Yes</button>
-                        </div>
-                        <button mat-stroked-button (click)="usureOpen(i)"> Buy </button>
+                        <ng-container *ngIf="ticket.number_of_tickets > 0; else soldOut">
+                            <div class="usure-fade" 
+                                [@openClose]="isOpen[i] ? 'open' : 'closed'">
+                                <div>Are you sure?</div>
+                                <button mat-raised-button class="bg-transparent" (click)="onBuy(ticket.event_id, ticket.ticket_type)">Yes</button>
+                            </div>
+                            <button mat-stroked-button (click)="usureOpen(i)"> Buy </button>
+                        </ng-container>
+                        <ng-template #soldOut>
+                            <span class="text-danger fw-bold">Sold Out</span>
+                            <button mat-stroked-button disabled class="ms-2">Buy</button>
+                        </ng-template>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+    <ng-template #elseBlock>
+        <app-loading-spinner></app-loading-spinner>
+    </ng-template>
 </div>  
